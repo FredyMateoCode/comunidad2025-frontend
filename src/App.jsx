@@ -18,7 +18,7 @@ function App() {
       </div>
       <h3>Vite + React</h3>
       <div>
-        <h4>Mostrando datos de Prueba</h4>
+        <h4>Mostrando datos de Prueba Comunidad 2025</h4>
         <Usuarios />
       </div>
     </>
