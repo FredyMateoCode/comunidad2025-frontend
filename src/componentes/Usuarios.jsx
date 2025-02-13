@@ -1,28 +1,41 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Table from "react-bootstrap/Table"; // Importamos la tabla de Bootstrap
 
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
-    axios.get("https://comunidad2025-backend.onrender.com/mostrarUsuarios/Usuarios2025")
-      .then(response => {
-        console.log("Datos recibidos:", response.data); // Verifica en la consola
+    axios
+      .get("https://comunidad2025-backend.onrender.com/mostrarUsuarios/Usuarios2025")
+      .then((response) => {
+        console.log("Datos recibidos:", response.data);
         setUsuarios(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error al obtener los datos:", error);
       });
   }, []);
 
   return (
-    <div>
-      <h2>Lista de Usuarios en DB - Aiven</h2>
-      <ul>
-        {usuarios.map(usuario => (
-          <li key={usuario.id_usuario}>{usuario.nombre_usuario}</li>
-        ))}
-      </ul>
+    <div className="container mt-4">
+      <h3>Lista de Usuarios en DB - Aiven</h3>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre de Usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usuarios.map((usuario) => (
+            <tr key={usuario.id_usuario}>
+              <td>{usuario.id_usuario}</td>
+              <td>{usuario.nombre_usuario}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 };

@@ -1,28 +1,28 @@
-//import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react'
 
-import Usuarios from './componentes/Usuarios';
+//Mis importaciones
+import Usuarios from './componentes/Usuarios'; // Importamos el componente Usuarios.
+//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./componentes/Navbar";
 
 function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h3>Vite + React</h3>
-      <div>
-        <h4>Mostrando datos de Prueba Comunidad 2025</h4>
-        <Usuarios />
+      <Navbar /> {/* Mostrar el Navbar */}
+      <div className="container mt-4">
+        <h4>Mostrando datos de Prueba - Comunidad 2025</h4>
+        <h>Paginá en construcción...</h>
+        <Usuarios /> {/* Mostrar el Navbar */}
       </div>
     </>
-  )
+  );
 }
 
-export default App
+
+export default App;
+
+
+
+
+
+//<Usuarios />
