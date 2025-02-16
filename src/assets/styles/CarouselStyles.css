@@ -1,0 +1,27 @@
+.carousel {
+  position: relative; /* Esto es lo predeterminado */
+  z-index: 2; /* Asegúrate de que no sea negativo */
+}
+
+.carousel .carousel-item img {
+  width: 100%; /* Asegúrate de que la imagen ocupe el ancho completo */
+  height: auto; /* Mantén la proporción de la imagen */
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+
+
+/* Animaciones de la transicion del Carousel __________________>>>>>
+.carousel .carousel-item {
+  transform: rotateY(90deg);
+  transition: transform 1s ease-in-out;
+}
+
+.carousel .active {
+  transform: rotateY(0deg);
+}
+*/

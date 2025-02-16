@@ -1,0 +1,51 @@
+/* Estilos generales del Navbar */
+.navbar {
+  background-color: #212529 !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que el Navbar esté por encima de otros elementos */
+}
+
+/* Estilos para los enlaces dentro del Navbar */
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.7) !important; /* Letras medio blancas */
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffffff !important; /* Se vuelve blanca al pasar el mouse */
+}
+
+/* Estilos para los dropdowns */
+.custom-dropdown .dropdown-menu {
+  background-color: #343a40 !important; /* Fondo oscuro */
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de los items dentro del dropdown */
+.custom-dropdown .dropdown-item {
+  color: rgba(255, 255, 255, 0.8) !important; /* Letras semi blancas */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cuando pasamos el mouse sobre los dropdown items */
+.custom-dropdown .dropdown-item:hover {
+  background-color: #495057 !important; /* Resaltado oscuro */
+  color: #ffffff !important; /* Texto blanco */
+}
+
+/* Asegura que el campo de búsqueda sea visible */
+.navbar .form-control {
+  width: 200px; /* Ajusta el ancho según sea necesario */
+  transition: all 0.3s ease;
+}
+
+.navbar .form-control:focus {
+  width: 250px; /* Se expande al hacer clic */
+}
+
+.navbar .btn {
+  border-color: rgba(255, 255, 255, 0.7);
+}

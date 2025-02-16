@@ -1,0 +1,47 @@
+/* Estilos para el Encabezado */
+.encabezado {
+  margin-top: 56px; /* Ajusta este valor según la altura del Navbar */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative; /* Asegúrate de que no sea fixed o absolute */
+  z-index: 1; /* Asegúrate de que no sea demasiado alto */
+}
+
+/* Animación para deslizar hacia arriba */
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Animación para deslizar hacia abajo */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+.encabezado.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  margin-top: 0;
+}
+
+.encabezado.visible {
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 56px;
+}
