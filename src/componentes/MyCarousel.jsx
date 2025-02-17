@@ -1,8 +1,8 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap'; // Importa el Carousel de React Bootstrap
-import Imagen1 from '../assets/imagenes/Imagen1.jpg';
-import Imagen2 from '../assets/imagenes/imagen2.jpg';
-import Imagen3 from '../assets/imagenes/imagen3.jpg';
+import Imagen1 from '../assets/imagenes/imagen1.jpg?url';
+import Imagen2 from '../assets/imagenes/imagen2.jpg?url';
+import Imagen3 from '../assets/imagenes/imagen3.jpg?url';
 
 import Animaciones from "../componentes/Animaciones";
 
