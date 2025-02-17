@@ -13,7 +13,10 @@ import { BsFillDoorOpenFill } from "react-icons/bs";
 
 //Librerias para imagen
 import Image from 'react-bootstrap/Image';
-import Logo from "../assets/logo_CCH.png";
+import Logo from "../assets/logo_CCH.png?url";
+
+
+
 
 const Encabezado = ({ className }) => {
   return (
