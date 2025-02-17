@@ -13,7 +13,8 @@ import { BsFillDoorOpenFill } from "react-icons/bs";
 
 //Librerias para imagen
 import Image from 'react-bootstrap/Image';
-import Logo from "../assets/logo_CCH.png?url";
+import Logo from "../assets/logo_cch.png?url";
+
 
 
 
