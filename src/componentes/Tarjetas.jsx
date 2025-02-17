@@ -2,9 +2,10 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup';
 
-import Imagen1 from '../assets/imagenes/imagen1.jpg';
-import Imagen2 from '../assets/imagenes/imagen2.jpg';
-import Imagen3 from '../assets/imagenes/imagen3.jpg';
+import Imagen1 from '../assets/imagenes/imagen1.jpg?url';
+import Imagen2 from '../assets/imagenes/imagen2.jpg?url';
+import Imagen3 from '../assets/imagenes/imagen3.jpg?url';
+
 
 function Tarjetas() {
   return (
