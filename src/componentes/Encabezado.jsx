@@ -16,7 +16,7 @@ import Image from 'react-bootstrap/Image';
 import Logo from "../assets/logo_cch.png?url";
 
 
-
+import { Link } from "react-router-dom"; // ✅ Importar Link de react-router-dom
 
 
 const Encabezado = ({ className }) => {
@@ -55,9 +55,10 @@ const Encabezado = ({ className }) => {
           {/* Columna 4 */}
           <Col className="bg-warning text-black" xs={4} ms={4} md={3} lg={3}>
             <Animaciones animationType="slideInRight">
-              <Button variant="primary">
+              <Button variant="danger" as={Link} to="/Login">
                 <BsFillDoorOpenFill className="me-2" size={20} /> Acceder
               </Button>
+
             </Animaciones>
 
           </Col>

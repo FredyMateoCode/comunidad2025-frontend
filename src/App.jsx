@@ -28,6 +28,8 @@ import Card003 from "./componentes/Card003";
 import Card004 from "./componentes/Card004";
 import Card005 from "./componentes/Card005";
 
+import Login from "./componentes/Login";
+
 function Home() {
   return (
     <>
@@ -102,10 +104,10 @@ function App() {
         <Route path="/turismo" element={<Turismo />} />
         <Route path="/convocatorias2" element={<Convocatorias2 />} />
         <Route path="Timeline" element={<Timeline />} />
+        <Route path="Login" element={<Login />} />
       </Routes>
 
       {/* Footer y Botón Gmail en todas las páginas */}
-      
 
       <Footer />
       <BotonGmail />
