@@ -46,9 +46,9 @@ const Encabezado = ({ className }) => {
           <Col className="bg-warning text-black" xs={4} ms={4} md={3} lg={3}>
             <Animaciones animationType="slideInRight">
               <FaWhatsapp size={20} className="me-2" />
-              999-999-999<br />
+              956-176-695<br />
               <BiPhone size={20} className="me-2" />
-              999-999-999
+              941-957-176
             </Animaciones>
           </Col>
 

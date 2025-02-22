@@ -1,0 +1,71 @@
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: #ae800a; /*Color de la Linea de tiempo*/
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+.timeline-content {
+  background: #FFFFFF;/*Color de los cuadros de texto*/
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(1, 1, 1, 1); /*Resplandor exterior de los cuadros*/
+  width: 40%;
+  position: relative;
+  border-left: 4px solid;
+}
+
+.timeline-item.right .timeline-content {
+  border-left: none;
+  border-right: 4px solid;
+}
+
+.timeline-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;/*Color de texto de los anios*/
+  font-weight: bold;
+  font-size: 18px;
+  border: 5px solid black; /*Trazo del circulo*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item.right .timeline-circle {
+  transform: translateX(-50%);
+}
+
+
+
+.large-circle {
+  width: 70px;
+  height: 70px;
+  font-size: 22px;
+}

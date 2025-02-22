@@ -2,52 +2,54 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup';
 
-import Imagen1 from '../assets/imagenes/imagen1.jpg?url';
-import Imagen2 from '../assets/imagenes/imagen2.jpg?url';
-import Imagen3 from '../assets/imagenes/imagen3.jpg?url';
+import Imagen1 from '../assets/imagenes/noticia001.png?url';
+import Imagen2 from '../assets/imagenes/imagen5.png?url';
+import Imagen3 from '../assets/imagenes/imagen6.png?url';
 
 
 function Tarjetas() {
   return (
     <CardGroup>
-      <Card className = "shadow text-center">
+      <Card className = "shadow">
         <Card.Img variant="top" src={Imagen1} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+          <Card.Title className = "text-center">Convocatoria SENATI 2025</Card.Title>
+          <Card.Text className = "text-left">
+            📆 27 de Febrero de 2025. <br />
+            ⏱ 4:00 pm. <br />
+            ⚠ Inscribete ya!!!
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <Button variant="warning">Ver Mas</Button>
+        <Card.Footer className = "text-center">
+          <Button variant="warning">Ver Más</Button>
           <br />
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">19 de febrero de 2025 </small>
         </Card.Footer>
       </Card>
-      <Card className = "shadow text-center">
+      <Card className = "shadow">
         <Card.Img variant="top" src={Imagen2} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.
+          <Card.Title className = "text-center">Conoce Nuestros Recursos Turísticos y Nuestras Costumbres</Card.Title>
+          <Card.Text className = "text-left">
+            📆 Fechas de feestividades. <br />
+            📝 Historias. <br />
+            🗺 Rutas.
           </Card.Text>
         </Card.Body>
         <Card.Footer>
           <Button variant="warning">Ver Mas</Button>
           <br />
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">19 de Febrero de 2025</small>
         </Card.Footer>
       </Card>
-      <Card className = "shadow text-center">
+      <Card className = "shadow">
         <Card.Img variant="top" src={Imagen3} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          <Card.Title className="text-center">Enterárate de Nuesras Convocatorias</Card.Title>
+          <Card.Text className = "text-left">
+            📆 Plazos de Postulación. <br />
+            ⏱ Horarios de presentación de documentos.<br />
+            📌 Resultados.
           </Card.Text>
         </Card.Body>
         <Card.Footer>

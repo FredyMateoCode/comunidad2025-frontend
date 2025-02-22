@@ -13,10 +13,20 @@ import Convocatorias from "./componentes/Convocatorias";
 import Footer from "./componentes/Footer";
 import BotonGmail from "./componentes/BotonGmail";
 import MyCarousel from "./componentes/MyCarousel";
+
+import Timeline from "./componentes/Timeline"; //Importamos Timeline
+
 import Turismo from "./componentes/Turismo"; // Importamos Turismo
-import Convocatorias2 from "./paginas/Convocatorias2"; // Importamos Turismo
+
+
+import Convocatorias2 from "./paginas/Convocatorias2"; // Importamos Convocatorias2
 
 import useScroll from "./hooks/useScroll"; // Hook personalizado
+
+import Card002 from "./componentes/Card002";
+import Card003 from "./componentes/Card003";
+import Card004 from "./componentes/Card004";
+import Card005 from "./componentes/Card005";
 
 function Home() {
   return (
@@ -26,28 +36,31 @@ function Home() {
         <h2>Lo Último</h2>
       </Container>
       <Convocatorias />
-      <Tarjetas />
+      <Animaciones animationType="fadeInUp">
+             <Tarjetas />
+      </Animaciones>
+      
       <br />
 
       <Container fluid className="noticias">
         <h2>Convocatorias de Trabajo</h2>
       </Container>
       <Convocatorias />
-      <Container className="mt-5 text-center">
+      <Container className="mt-5">
         <Row>
           <Col md={4}>
             <Animaciones animationType="slideInLeft">
-              <Card001 />
+              <Card003 />
             </Animaciones>
           </Col>
           <Col md={4}>
             <Animaciones animationType="zoomIn">
-              <Card001 />
+              <Card004 />
             </Animaciones>
           </Col>
           <Col md={4}>
             <Animaciones animationType="slideInRight">
-              <Card001 />
+              <Card005 />
             </Animaciones>
           </Col>
         </Row>
@@ -58,31 +71,15 @@ function Home() {
         <h2>Convocatorias de Estudio</h2>
       </Container>
       <Convocatorias />
-      <Container className="mt-5 text-center">
+      <Container className="mt-5">
         <Row>
           <Col md={4}>
             <Animaciones animationType="slideInLeft">
-              <Card001 />
-            </Animaciones>
-          </Col>
-          <Col md={4}>
-            <Animaciones animationType="zoomIn">
-              <Card001 />
-            </Animaciones>
-          </Col>
-          <Col md={4}>
-            <Animaciones animationType="slideInRight">
-              <Card001 />
+              <Card002 />
             </Animaciones>
           </Col>
         </Row>
       </Container>
-
-      <div className="container mt-4">
-        <h4>Mostrando datos de Prueba - Comunidad 2025 Desde Aiven</h4>
-        <p>Página en construcción...</p>
-        <Usuarios />
-      </div>
     </>
   );
 }
@@ -104,9 +101,12 @@ function App() {
         <Route path="/tarjetas" element={<Tarjetas />} />
         <Route path="/turismo" element={<Turismo />} />
         <Route path="/convocatorias2" element={<Convocatorias2 />} />
+        <Route path="Timeline" element={<Timeline />} />
       </Routes>
 
       {/* Footer y Botón Gmail en todas las páginas */}
+      
+
       <Footer />
       <BotonGmail />
     </>
