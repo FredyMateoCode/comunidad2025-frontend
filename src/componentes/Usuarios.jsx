@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"; //
-import axios from "axios";
+import { useState, useEffect } from "react"; // Netamente React
+import axios from "axios"; //Maneja las solicitudes 
 import Table from "react-bootstrap/Table"; // Importamos la tabla de Bootstrap
 
 import "../assets/styles/UsuariosStyles.css";
