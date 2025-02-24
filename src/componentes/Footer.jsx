@@ -1,6 +1,6 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap"; //Componentes Bootstrar
 import { BiHome, BiBriefcase, BiPhone } from "react-icons/bi"; // Importamos los iconos
-import { FaFacebook, FaYoutube, FaWhatsapp  } from "react-icons/fa";
+import { FaFacebook, FaYoutube, FaWhatsapp  } from "react-icons/fa"; // Otros tipos de iconos
 
 const Footer = () => {
   return (
@@ -47,7 +47,7 @@ const Footer = () => {
         {/* Derechos reservados */}
         <Row className="mt-3">
           <Col className="text-center">
-            <p className="mb-0">&copy; Desarrollado por <strong>Fredy Mateo.</strong> Todos los derechos reservados.</p>
+            <p className="mb-0">&copy; CCH-v0.1 - Desarrollado por <strong>Fredy Mateo.</strong> Todos los derechos reservados.</p>
           </Col>
         </Row>
       </Container>

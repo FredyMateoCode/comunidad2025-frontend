@@ -1,12 +1,12 @@
 import React from "react";
 import "../assets/styles/Styles.css"; // Asegúrate de importar el CSS
 
-const Convocatorias = () => {
+const Separador = () => {
   return (
     <div className = "bg-warning">
-      <p className = "text-warning">Sección de Convocatorias</p>
+      <p className = "text-warning">.</p>
     </div>
   );
 };
 
-export default Convocatorias;
+export default Separador;

@@ -1,9 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-import Imagen2 from '../assets/imagenes/conv10.png?url';
+import Imagen2 from '../../assets/imagenes/conv10.png?url';
 
-function Card003() {
+import { Link } from "react-router-dom"; // ✅ Importar Link de react-router-dom
+
+
+
+function Card005() {
   return (
     <Card className="shadow">
       <Card.Img variant="top" src={Imagen2} />
@@ -15,10 +19,10 @@ function Card003() {
           📆 21 de febrero de 2025.<br />
           ⏱ 3:30 p.m.<br />
         </Card.Text>
-        <Button className="text-center" variant="warning">Ver Mas</Button>
+        <Button className="text-center" variant="warning" as={Link} to="/Tm10">Ver Más</Button>
       </Card.Body>
     </Card>
   );
 }
 
-export default Card003;
+export default Card005;

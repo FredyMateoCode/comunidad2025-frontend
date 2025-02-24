@@ -55,7 +55,7 @@ function Tarjetas() {
         <Card.Footer>
           <Button variant="warning">Ver Mas</Button>
           <br />
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">25 de febrero de 2025</small>
         </Card.Footer>
       </Card>
     </CardGroup>
