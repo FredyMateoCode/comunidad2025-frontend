@@ -47,7 +47,7 @@ const Footer = () => {
         {/* Derechos reservados */}
         <Row className="mt-3">
           <Col className="text-center">
-            <p className="mb-0">&copy; CCH-v0.1 - Desarrollado por <strong>Fredy Mateo.</strong> Todos los derechos reservados.</p>
+            <p className="mb-0">&copy; CCH-<strong>v0.1</strong> - Desarrollado por <strong>Fredy Mateo.</strong> Todos los derechos reservados.</p>
           </Col>
         </Row>
       </Container>

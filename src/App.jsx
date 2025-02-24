@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"; //Para Navegar entre componentes
 import { Container, Row, Col } from "react-bootstrap"; //Componentes Bootstrap React
 
-import { useState, useEffect } from "react"; //Estados Iniciales de los componentes.
+import { React, useState, useEffect } from "react"; //Estados Iniciales de los componentes.
 
 import Animaciones from "./componentes/Animaciones"; //Animaciones creadas con animate
 
@@ -40,7 +40,7 @@ import Tm008 from "./componentes/lineas/Tm008"; //Importamos la Linea de tiempo
 
 
 /*Lineas de tiempo de convocatorias*/
-
+import PopupInicio from "./componentes/PopupInicio"; // Importa el popup
 
 /*Componentes que interacturan con el backend*/
 import Usuarios from "./componentes/Usuarios";//Componente que muestra los usuarios de la base de datos.
@@ -51,6 +51,9 @@ function App() {
 
   return (
     <>
+    <div>
+      <PopupInicio /> {/* Se mostrará automáticamente al cargar la página */}
+    </div>
       {/* Navbar y Encabezado se muestran en todas las páginas */}
       <NavbarConSubmenus />
       <Encabezado className={showEncabezado ? "visible" : "hidden"} />
