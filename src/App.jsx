@@ -5,6 +5,14 @@ import { React, useState, useEffect } from "react"; //Componentes y estados Inic
 
 import Animaciones from "./componentes/Animaciones"; //Animaciones creadas con animate
 
+
+/*-------------->>>>>>>>>>>>>IMPORTACIÓN DE PRUEBA------------------------->>>>>>>>>>>>>>>>>>>>>>>*/
+
+import Dashboard from "./componentes/Dashboard"; 
+
+/*<<<<<<<<<<<<-------------------IMPORTACIÓN DE PRUEBA.---------------------<<<<<<<<<<<<<<<<<<<<<<*/
+
+
 /*Importamos todos los componetes que se mostraran inicialmente*/
 import PopupInicio from "./componentes/PopupInicio"; // Importa el popup
 import NavbarConSubmenus from "./componentes/NavbarConSubmenus";
@@ -72,9 +80,12 @@ function App() {
         <Route path="/Lista10" element={<Lista10 />} />
         <Route path="/Lista009" element={<Lista009 />} />
         <Route path="/Lista008" element={<Lista008 />} />
+        {/* ✅ Nueva ruta para el Dashboard */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
       {/* Footer y Botón Gmail en todas las páginas */}
+      
       <Footer />
       <BotonGmail />
     </>

@@ -25,14 +25,26 @@ const Usuarios = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre de Usuario</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th>Nombres de Usuario</th>
+            <th>Apellidos de Usuario</th>
+            <th>DNI</th>
+            <th>Celular</th>
+            <th>Rol</th>
           </tr>
         </thead>
         <tbody>
           {usuarios.map((usuario) => (
             <tr key={usuario.id_usuario}>
               <td>{usuario.id_usuario}</td>
-              <td>{usuario.nombre_usuario}</td>
+              <td>{usuario.usuario_usuario}</td>
+              <td>{usuario.password_usuario}</td>
+              <td>{usuario.nombres_usuario}</td>
+              <td>{usuario.apellidos_usuario}</td>
+              <td>{usuario.dni_usuario}</td>
+              <td>{usuario.celular_usuario}</td>
+              <td>{usuario.id_rol}</td>
             </tr>
           ))}
         </tbody>

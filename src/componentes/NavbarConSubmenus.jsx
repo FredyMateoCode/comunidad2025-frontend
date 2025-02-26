@@ -70,7 +70,7 @@ const NavbarConSubmenus = () => {
               <NavDropdown.Item as={Link} to="/caserios/san-carlos">San Carlos</NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
+            <Nav.Link as={Link} to="usuarios">Contacto</Nav.Link>
 
             {/* Dropdown Costumbres */}
             <NavDropdown
