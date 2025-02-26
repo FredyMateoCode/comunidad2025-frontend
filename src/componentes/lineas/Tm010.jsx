@@ -29,7 +29,8 @@ const timelineData = [
     title: "RESULTADOS",
     icon: "⚙️", color: "#0c5ff3",
     description: "Postulantes Seleccionados.❌",
-    buttonText: "Explorar" },
+    buttonText: "Explorar",
+    route: "/Result010" },
 
   { year: "5",
     title: "FEEDBACK",

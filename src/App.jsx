@@ -47,6 +47,9 @@ import Lista10 from "./componentes/lineas/Lista10";//
 import Lista009 from "./componentes/lineas/Lista009";
 import Lista008 from "./componentes/lineas/Lista008";
 
+/*Resultados*/
+import Result010 from "./componentes/resultados/Result010";//
+
 /*Convocatorias de Estudio y Otros*/
 import Otros001 from "./componentes/otros/Otros001";
 
@@ -80,6 +83,7 @@ function App() {
         <Route path="/Lista10" element={<Lista10 />} />
         <Route path="/Lista009" element={<Lista009 />} />
         <Route path="/Lista008" element={<Lista008 />} />
+        <Route path="/Result010" element={<Result010 />} />
         {/* ✅ Nueva ruta para el Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
