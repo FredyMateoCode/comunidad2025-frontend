@@ -5,6 +5,7 @@ function result006() {
     <>
     <div className="content"> 
     <h1 className="text-center">RESULTADOS CONVOCATORIA N° 006 - AYUDANTE DE OPERACIONES MINA</h1>
+    <h4 className="text-center">📆 28 de febrero 2024</h4>
     <Table striped bordered hover>
       <thead>
         <tr>

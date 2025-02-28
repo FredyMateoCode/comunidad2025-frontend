@@ -10,12 +10,12 @@ const timelineData = [
   { year: "1", 
     title: "PUBLICACIÓN",
     icon: "📆", color: "#f3bc0c", 
-    description: "📆 18-02-2025 ✅"},
+    description: "📆 09-02-2025 ✅"},
 
   { year: "2",
     title: "ENVÍO DE CURRICULM",
     icon: "📂", color: "#f34c0c",
-    description: "📆 21-02-2025 ✅"},
+    description: "📆 12-02-2025 ✅"},
 
   { year: "3",
     title: "POSTULANTES",
