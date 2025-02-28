@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importamos useNavigate
 import axios from "axios";
-import "../assets/styles/Login.css";
+import "../assets/styles/Login.css";//Estilos 
 
 const Login = () => {
+  //Para capturar los datos del formulario
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Hook para la navegación
@@ -19,8 +20,8 @@ const Login = () => {
       });
 
       console.log("Respuesta del servidor:", response.data);
-      alert("Inicio de sesión exitoso");
-      navigate("/dashboard"); // Cambia "/dashboard" por la ruta correcta
+      alert("Inicio de sesión exitoso - BIENVENIDOS");
+      navigate("/dashboard"); // Ruta que se muestra desspues del inicio de sesion.
 
 
     } catch (error) {
@@ -36,7 +37,7 @@ const Login = () => {
     }
   };
 
-
+  /*Creación del formulario*/
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
@@ -48,6 +49,7 @@ const Login = () => {
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
             required
+            placeholder = "Ingrese su Usuario"
           />
         </div>
         <div className="input-group">
@@ -57,6 +59,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder = "Ingrese su contraseña"
           />
         </div>
         <button type="submit">Ingresar</button>

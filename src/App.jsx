@@ -34,21 +34,28 @@ import Res001 from "./componentes/recientes/Res001";
 import Res002 from "./componentes/recientes/Res002";
 import Res003 from "./componentes/recientes/Res003";
 
+
+
 /*Convocatorias de trabajo - Convocatorias*/
+
+
 
 /*Lineas de tiempo de convocatorias*/
 
 import Tm10 from "./componentes/lineas/Tm010"; //Importamos la Linea de tiempo
 import Tm009 from "./componentes/lineas/Tm009"; //Importamos la Linea de tiempo
 import Tm008 from "./componentes/lineas/Tm008"; //Importamos la Linea de tiempo
+import Tm006 from "./componentes/lineas/Tm006";
 
 /*Importación de todas las listas de postulantes*/
 import Lista10 from "./componentes/lineas/Lista10";//
 import Lista009 from "./componentes/lineas/Lista009";
 import Lista008 from "./componentes/lineas/Lista008";
+import Lista006 from "./componentes/lineas/Lista006";
 
 /*Resultados*/
 import Result010 from "./componentes/resultados/Result010";//
+import Result006 from "./componentes/resultados/Result006";
 
 /*Convocatorias de Estudio y Otros*/
 import Otros001 from "./componentes/otros/Otros001";
@@ -80,10 +87,13 @@ function App() {
         <Route path="/Tm10" element={<Tm10 />} />
         <Route path="Tm009" element={<Tm009 />} />
         <Route path="Tm008" element={<Tm008 />} />
+        <Route path="Tm006" element={<Tm006 />} />
         <Route path="/Lista10" element={<Lista10 />} />
         <Route path="/Lista009" element={<Lista009 />} />
         <Route path="/Lista008" element={<Lista008 />} />
+        <Route path="/Lista006" element={<Lista006 />} />
         <Route path="/Result010" element={<Result010 />} />
+        <Route path="/Result006" element={<Result006 />} />
         {/* ✅ Nueva ruta para el Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
