@@ -4,6 +4,8 @@ import Card from 'react-bootstrap/Card';
 
 import Imagen2 from '../assets/imagenes/docentes.png?url';
 
+import { Link } from "react-router-dom"; // ✅ Importar Link de react-router-dom
+
 const PopupInicio = () => {
   const [show, setShow] = useState(false);
 
@@ -23,6 +25,7 @@ const PopupInicio = () => {
         </p>
       </Modal.Body>
       <Modal.Footer>
+        <Button className="text-center" variant="primary" as={Link} to="/Tmdoc" onClick={() => setShow(false)}>Ver Detalles</Button>
         <Button variant="warning" onClick={() => setShow(false)}>
           Cerrar
         </Button>
