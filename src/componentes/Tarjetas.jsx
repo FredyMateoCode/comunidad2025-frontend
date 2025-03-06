@@ -2,9 +2,11 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup';
 
-import Imagen1 from '../assets/imagenes/noticia001.png?url';
+import Imagen1 from '../assets/imagenes/docentes.png?url';
 import Imagen2 from '../assets/imagenes/imagen5.png?url';
 import Imagen3 from '../assets/imagenes/imagen6.png?url';
+
+import { Link } from "react-router-dom"; // ✅ Importar Link de react-router-dom
 
 
 function Tarjetas() {
@@ -13,17 +15,18 @@ function Tarjetas() {
       <Card className = "shadow">
         <Card.Img variant="top" src={Imagen1} />
         <Card.Body>
-          <Card.Title className = "text-center">Convocatoria SENATI 2025</Card.Title>
+          <Card.Title className = "text-center">Convocatoria Docente - 2025 Inicical - Primaria - Secundaria</Card.Title>
+          <h3>Docentes - Auxiliares - Guardianía</h3>
           <Card.Text className = "text-left">
-            📆 27 de Febrero de 2025. <br />
-            ⏱ 4:00 pm. <br />
-            ⚠ Inscribete ya!!!
+            ⚠ Inscripciones hasta: <br />
+            📆 10 de Marzo de 2025. <br />
+            ⏱ 12:00 m. <br />
           </Card.Text>
         </Card.Body>
         <Card.Footer className = "text-center">
-          <Button variant="warning">Ver Más</Button>
+          <Button className="text-center" variant="warning" as={Link} to="/Tmdoc">Ver Detalles</Button>
           <br />
-          <small className="text-muted">19 de febrero de 2025 </small>
+          <small className="text-muted">05 de marzo de 2025 </small>
         </Card.Footer>
       </Card>
       <Card className = "shadow">
