@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { BsFileEarmarkPdf } from 'react-icons/bs';
 
 
-import detallesPDF from '../../assets/imagenes/detalles003.pdf';
+import detallesPDF from '../../assets/imagenes/detalles4.pdf';
 
 function Anexos() {
   const handleOpenPDF = () => {
