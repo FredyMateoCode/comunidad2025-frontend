@@ -28,6 +28,7 @@ import BotonGmail from "./componentes/BotonGmail";//Boton Flotante Gmail
 import Turismo from "./componentes/Turismo"; // Componente con todo lo realicionado a turismo
 import Convocatorias from "./paginas/Convocatorias"; // Componente con todas las convocatorias
 import Login from "./componentes/Login";//Control de acceso para datos restringidos.
+import Docentes from "./paginas/Docentes"; // Componente con todas las convocatorias
 
 /*3 Convocatorias de trabajo Recientes*/
 import Res001 from "./componentes/recientes/Res001";
@@ -46,8 +47,11 @@ import Tm10 from "./componentes/lineas/Tm010"; //Importamos la Linea de tiempo
 import Tm009 from "./componentes/lineas/Tm009"; //Importamos la Linea de tiempo
 import Tm008 from "./componentes/lineas/Tm008"; //Importamos la Linea de tiempo
 import Tm006 from "./componentes/lineas/Tm006";
+import Tmdoc from "./componentes/lineas/Tmdoc";
+
 
 /*Importación de todas las listas de postulantes*/
+import Anexos from "./componentes/lineas/Anexos";//
 import Lista10 from "./componentes/lineas/Lista10";//
 import Lista009 from "./componentes/lineas/Lista009";
 import Lista008 from "./componentes/lineas/Lista008";
@@ -83,17 +87,20 @@ function App() {
         <Route path="/usuarios" element={<Usuarios />} />
         <Route path="/turismo" element={<Turismo />} />
         <Route path="/convocatorias" element={<Convocatorias />} />
+        <Route path="/docentes" element={<Docentes />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Tm10" element={<Tm10 />} />
         <Route path="Tm009" element={<Tm009 />} />
         <Route path="Tm008" element={<Tm008 />} />
         <Route path="Tm006" element={<Tm006 />} />
+        <Route path="Tmdoc" element={<Tmdoc />} />
         <Route path="/Lista10" element={<Lista10 />} />
         <Route path="/Lista009" element={<Lista009 />} />
         <Route path="/Lista008" element={<Lista008 />} />
         <Route path="/Lista006" element={<Lista006 />} />
         <Route path="/Result010" element={<Result010 />} />
         <Route path="/Result006" element={<Result006 />} />
+        <Route path="/Anexos" element={<Anexos />} />
         {/* ✅ Nueva ruta para el Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

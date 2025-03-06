@@ -50,7 +50,7 @@ const NavbarConSubmenus = () => {
               className="custom-dropdown"
             >
               <NavDropdown.Item as={Link} to="/Convocatorias">Conv. Trabajo</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/convocatorias/docentes">Docentes</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/Docentes">Docentes</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/convocatorias/otros">Otros</NavDropdown.Item>
             </NavDropdown>
 

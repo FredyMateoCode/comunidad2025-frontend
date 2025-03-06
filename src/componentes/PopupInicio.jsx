@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 
-import Imagen2 from '../assets/imagenes/noticia001.png?url';
+import Imagen2 from '../assets/imagenes/docentes.png?url';
 
 const PopupInicio = () => {
   const [show, setShow] = useState(false);
@@ -15,11 +15,10 @@ const PopupInicio = () => {
   return (
     <Modal show={show} onHide={() => setShow(false)} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Bienvenido</Modal.Title>
+        <Modal.Title>Bienvenido.</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p><strong>Página en Desarrollo</strong>, por lo que al interactuar con algunos componentes como (enlaces, botones y otros) 
-        puede no obtener resultados <br />
+        <p><strong>Convocatoria Docente</strong>, Para ver los detalles, ingrese al menú <strong>*Convocatorias</strong> y a continuación en <strong>*Docentes.</strong> <br />
         <Card.Img variant="top" src={Imagen2} />
         </p>
       </Modal.Body>
