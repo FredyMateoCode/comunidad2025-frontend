@@ -1,6 +1,8 @@
 import Table from 'react-bootstrap/Table';
 
-
+/*Componentes que interacturan con el backend*/
+import Usuarios from "../componentes/Usuarios";//Componente que muestra los usuarios de la base de datos.
+import Comuneros from "../componentes/Comuneros";//Componente que muestra los usuarios de la base de datos.
 
 function Dashboard() {
   return (
@@ -110,6 +112,9 @@ function Dashboard() {
 
       </tbody>
     </Table>
+
+    <Usuarios />
+    <Comuneros />
     </div>
     </>
   );
