@@ -1,16 +1,24 @@
-import { useState, useEffect } from "react"; // Netamente React
-import axios from "axios"; //Maneja las solicitudes 
-import Table from "react-bootstrap/Table"; // Importamos la tabla de Bootstrap
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Pagination from "react-bootstrap/Pagination";
+import { FaFilePdf, FaEdit, FaTrash } from "react-icons/fa"; // Importar iconos
 
 import "../assets/styles/UsuariosStyles.css";
+
 const Comuneros = () => {
   const [comuneros, setComuneros] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Buscador
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 5; // Número de registros por página
+  const maxPageButtons = 10; // Máximo de botones de paginación visibles
 
   useEffect(() => {
     axios
       .get("https://comunidad2025-backend.onrender.com/mostrarComuneros/comuneros")
       .then((response) => {
-        console.log("Datos recibidos:", response.data);
         setComuneros(response.data);
       })
       .catch((error) => {
@@ -18,9 +26,38 @@ const Comuneros = () => {
       });
   }, []);
 
+  // Filtrar los comuneros según el término de búsqueda
+  const filteredComuneros = comuneros.filter((comunero) =>
+    `${comunero.dni_com} ${comunero.apellidos_com} ${comunero.nombres_com}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
+  // Paginación
+  const totalRecords = filteredComuneros.length;
+  const totalPages = Math.ceil(totalRecords / recordsPerPage);
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = filteredComuneros.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  // Calcular el rango de botones de paginación
+  const startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
+  const endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+
   return (
     <div className="container mt-4">
       <h3>Lista de Comuneros en DB - Aiven</h3>
+
+      {/* Buscador */}
+      <Form className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Buscar por DNI, Apellidos o Nombres..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </Form>
+
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -32,10 +69,11 @@ const Comuneros = () => {
             <th>N° CARNÉ</th>
             <th>CASERÍO</th>
             <th>CONDICIÓN</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {comuneros.map((comunero) => (
+          {currentRecords.map((comunero) => (
             <tr key={comunero.id_com}>
               <td>{comunero.id_com}</td>
               <td>{comunero.dni_com}</td>
@@ -45,10 +83,51 @@ const Comuneros = () => {
               <td>{comunero.carne_com}</td>
               <td>{comunero.caserio_com}</td>
               <td>{comunero.condicion_com}</td>
+              <td>
+                <div className="d-flex gap-1">
+                  <Button variant="success" size="sm">
+                    <FaFilePdf />
+                  </Button>
+                  <Button variant="warning" size="sm">
+                    <FaEdit />
+                  </Button>
+                  <Button variant="danger" size="sm">
+                    <FaTrash />
+                  </Button>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
       </Table>
+
+      {/* Paginación */}
+      {totalPages > 1 && (
+        <Pagination size="sm" className="justify-content-center">
+          <Pagination.Prev
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          />
+
+          {[...Array(endPage - startPage + 1)].map((_, index) => {
+            const pageNumber = startPage + index;
+            return (
+              <Pagination.Item
+                key={pageNumber}
+                active={pageNumber === currentPage}
+                onClick={() => setCurrentPage(pageNumber)}
+              >
+                {pageNumber}
+              </Pagination.Item>
+            );
+          })}
+
+          <Pagination.Next
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          />
+        </Pagination>
+      )}
     </div>
   );
 };
