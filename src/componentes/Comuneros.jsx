@@ -28,6 +28,10 @@ const Comuneros = () => {
             <th>DNI</th>
             <th>APELLIDOS</th>
             <th>NOMBRES</th>
+            <th>MAJADA</th>
+            <th>N° CARNÉ</th>
+            <th>CASERÍO</th>
+            <th>CONDICIÓN</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +41,10 @@ const Comuneros = () => {
               <td>{comunero.dni_com}</td>
               <td>{comunero.apellidos_com}</td>
               <td>{comunero.nombres_com}</td>
+              <td>{comunero.majada_com}</td>
+              <td>{comunero.carne_com}</td>
+              <td>{comunero.caserio_com}</td>
+              <td>{comunero.condicion_com}</td>
             </tr>
           ))}
         </tbody>
