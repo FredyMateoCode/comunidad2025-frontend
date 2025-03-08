@@ -8,7 +8,7 @@ const Comuneros = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/mostrarComuneros/comuneros")
+      .get("https://comunidad2025-backend.onrender.com/mostrarComuneros/comuneros")
       .then((response) => {
         console.log("Datos recibidos:", response.data);
         setComuneros(response.data);
