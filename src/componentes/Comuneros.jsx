@@ -4,7 +4,9 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Pagination from "react-bootstrap/Pagination";
-import { FaFilePdf, FaEdit, FaTrash } from "react-icons/fa"; // Importar iconos
+import { FaFilePdf, FaEdit, FaTrash } from "react-icons/fa";
+import GenerarPDF from "./GenerarPDF"; // Importamos el nuevo componente
+import FormularioComunero from "./FormularioComunero"; // Importamos el nuevo componente
 
 import "../assets/styles/UsuariosStyles.css";
 
@@ -28,7 +30,7 @@ const Comuneros = () => {
 
   // Filtrar los comuneros según el término de búsqueda
   const filteredComuneros = comuneros.filter((comunero) =>
-    `${comunero.dni_com} ${comunero.apellidos_com} ${comunero.nombres_com}`
+    `${comunero.dni_com} ${comunero.apellidos_com} ${comunero.nombres_com} ${comunero.carne_com}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -43,6 +45,17 @@ const Comuneros = () => {
   // Calcular el rango de botones de paginación
   const startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
   const endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+
+  // Funcines para manejar la generación del PDF
+  const handleGenerarPDF = (comunero) => {
+    GenerarPDF(comunero);
+  };
+
+  const abrirFormularioEnNuevaPestana = (comunero) => {
+    const url = `/formulario-comunero?id_com=${comunero.id_com}&dni_com=${comunero.dni_com}&apellidos_com=${comunero.apellidos_com}&nombres_com=${comunero.nombres_com}&majada_com=${comunero.majada_com}&carne_com=${comunero.carne_com}&caserio_com=${comunero.caserio_com}&condicion_com=${comunero.condicion_com}`;
+
+    window.open(url, "_blank", "width=600,height=600");
+  };
 
   return (
     <div className="container mt-4">
@@ -85,10 +98,10 @@ const Comuneros = () => {
               <td>{comunero.condicion_com}</td>
               <td>
                 <div className="d-flex gap-1">
-                  <Button variant="success" size="sm">
+                  <Button variant="success" size="sm" onClick={() => handleGenerarPDF(comunero)}>
                     <FaFilePdf />
                   </Button>
-                  <Button variant="warning" size="sm">
+                  <Button variant="warning" size="sm" onClick={() => abrirFormularioEnNuevaPestana(comunero)}>
                     <FaEdit />
                   </Button>
                   <Button variant="danger" size="sm">

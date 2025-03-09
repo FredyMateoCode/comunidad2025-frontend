@@ -29,6 +29,7 @@ import Turismo from "./componentes/Turismo"; // Componente con todo lo realicion
 import Convocatorias from "./paginas/Convocatorias"; // Componente con todas las convocatorias
 import Login from "./componentes/Login";//Control de acceso para datos restringidos.
 import Docentes from "./paginas/Docentes"; // Componente con todas las convocatorias
+import FormularioComunero from "./componentes/FormularioComunero";
 
 /*3 Convocatorias de trabajo Recientes*/
 import Res001 from "./componentes/recientes/Res001";
@@ -87,6 +88,7 @@ function App() {
         <Route path="/usuarios" element={<Usuarios />} />
         <Route path="/turismo" element={<Turismo />} />
         <Route path="/convocatorias" element={<Convocatorias />} />
+        <Route path="/formulario-comunero" element={<FormularioComunero />} />
         <Route path="/docentes" element={<Docentes />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Tm10" element={<Tm10 />} />
