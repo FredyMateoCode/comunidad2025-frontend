@@ -52,13 +52,12 @@ const Comuneros = () => {
   };
 
   const abrirFormularioEnNuevaPestana = (comunero) => {
-  const url = `/formulario-comunero?id_com=${comunero.id_com}&dni_com=${comunero.dni_com}&apellidos_com=${comunero.apellidos_com}&nombres_com=${comunero.nombres_com}&majada_com=${comunero.majada_com}&carne_com=${comunero.carne_com}&caserio_com=${comunero.caserio_com}&condicion_com=${comunero.condicion_com}`;
+    const baseUrl = window.location.origin; // Obtiene la URL base del sitio actual
+    const url = `${baseUrl}/formulario-comunero?id_com=${comunero.id_com}&dni_com=${comunero.dni_com}&apellidos_com=${encodeURIComponent(comunero.apellidos_com)}&nombres_com=${encodeURIComponent(comunero.nombres_com)}&majada_com=${encodeURIComponent(comunero.majada_com)}&carne_com=${comunero.carne_com}&caserio_com=${encodeURIComponent(comunero.caserio_com)}&condicion_com=${comunero.condicion_com}`;
 
-  const nuevaPestana = window.open(url, "_blank"); // Abre en nueva pestaña sin restricciones
-  if (nuevaPestana) {
-    nuevaPestana.document.title = `Comunero - ${comunero.nombres_com}`; // Intenta cambiar el título de la pestaña
-  }
+    window.open(url, "_blank"); // Abre en nueva pestaña
 };
+
 
   return (
     <div className="container mt-4">
