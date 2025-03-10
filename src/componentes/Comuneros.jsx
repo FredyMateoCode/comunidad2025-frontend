@@ -59,8 +59,6 @@ const Comuneros = () => {
 
   return (
     <div className="container mt-4">
-      <h3>Lista de Comuneros en DB - Aiven</h3>
-
       {/* Buscador */}
       <Form className="mb-3">
         <Form.Control
