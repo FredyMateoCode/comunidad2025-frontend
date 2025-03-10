@@ -51,38 +51,3 @@ const GenerarPDF = async (comunero) => {
 };
 
 export default GenerarPDF;
-
-
-
-
-/*
-import { jsPDF } from "jspdf";
-import membrete from "../assets/imagenes/membrete.png"; // Importar la imagen
-
-const GenerarPDF = (comunero) => {
-  const doc = new jsPDF();
-
-  const img = new Image();
-  img.src = membrete;
-  img.onload = function () {
-    doc.addImage(img, "PNG", 0, 0, 210, 297); // Ajustar la imagen al tamaño A4
-
-    // Agregar texto encima de la imagen
-    doc.setFontSize(14);
-    doc.setTextColor(0, 0, 0); // Color negro
-    doc.text("CONSTANCIA DE COMUNERO - TITULAR", 30, 40);
-    doc.text(`DNI: ${comunero.dni_com}`, 20, 60);
-    doc.text(`Apellidos: ${comunero.apellidos_com}`, 20, 70);
-    doc.text(`Nombres: ${comunero.nombres_com}`, 20, 80);
-    doc.text(`Majada: ${comunero.majada_com}`, 20, 90);
-    doc.text(`N° Carné: ${comunero.carne_com}`, 20, 100);
-    doc.text(`Caserío: ${comunero.caserio_com}`, 20, 110);
-    doc.text(`Condición: ${comunero.condicion_com}`, 20, 120);
-
-    // Abrir el PDF en una nueva pestaña
-    window.open(doc.output("bloburl"), "_blank");
-  };
-};
-
-export default GenerarPDF;
-*/

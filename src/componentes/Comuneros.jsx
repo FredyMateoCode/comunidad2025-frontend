@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Pagination from "react-bootstrap/Pagination";
-import { FaFilePdf, FaEdit, FaTrash } from "react-icons/fa";
+import { FaFilePdf, FaEdit, FaTrash, FaBook } from "react-icons/fa";
 import GenerarPDF from "./GenerarPDF"; // Importamos el nuevo componente
 import FormularioComunero from "./FormularioComunero"; // Importamos el nuevo componente
 
@@ -52,10 +52,13 @@ const Comuneros = () => {
   };
 
   const abrirFormularioEnNuevaPestana = (comunero) => {
-    const url = `/formulario-comunero?id_com=${comunero.id_com}&dni_com=${comunero.dni_com}&apellidos_com=${comunero.apellidos_com}&nombres_com=${comunero.nombres_com}&majada_com=${comunero.majada_com}&carne_com=${comunero.carne_com}&caserio_com=${comunero.caserio_com}&condicion_com=${comunero.condicion_com}`;
+  const url = `/formulario-comunero?id_com=${comunero.id_com}&dni_com=${comunero.dni_com}&apellidos_com=${comunero.apellidos_com}&nombres_com=${comunero.nombres_com}&majada_com=${comunero.majada_com}&carne_com=${comunero.carne_com}&caserio_com=${comunero.caserio_com}&condicion_com=${comunero.condicion_com}`;
 
-    window.open(url, "_blank", "width=600,height=600");
-  };
+  const nuevaPestana = window.open(url, "_blank"); // Abre en nueva pestaña sin restricciones
+  if (nuevaPestana) {
+    nuevaPestana.document.title = `Comunero - ${comunero.nombres_com}`; // Intenta cambiar el título de la pestaña
+  }
+};
 
   return (
     <div className="container mt-4">
@@ -69,48 +72,51 @@ const Comuneros = () => {
         />
       </Form>
 
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>DNI</th>
-            <th>APELLIDOS</th>
-            <th>NOMBRES</th>
-            <th>MAJADA</th>
-            <th>N° CARNÉ</th>
-            <th>CASERÍO</th>
-            <th>CONDICIÓN</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentRecords.map((comunero) => (
-            <tr key={comunero.id_com}>
-              <td>{comunero.id_com}</td>
-              <td>{comunero.dni_com}</td>
-              <td>{comunero.apellidos_com}</td>
-              <td>{comunero.nombres_com}</td>
-              <td>{comunero.majada_com}</td>
-              <td>{comunero.carne_com}</td>
-              <td>{comunero.caserio_com}</td>
-              <td>{comunero.condicion_com}</td>
-              <td>
-                <div className="d-flex gap-1">
-                  <Button variant="success" size="sm" onClick={() => handleGenerarPDF(comunero)}>
-                    <FaFilePdf />
-                  </Button>
-                  <Button variant="warning" size="sm" onClick={() => abrirFormularioEnNuevaPestana(comunero)}>
-                    <FaEdit />
-                  </Button>
-                  <Button variant="danger" size="sm">
-                    <FaTrash />
-                  </Button>
-                </div>
-              </td>
+      <div className="table-responsive">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>DNI</th>
+              <th>APELLIDOS</th>
+              <th>NOMBRES</th>
+              <th>MAJADA</th>
+              <th>N° CARNÉ</th>
+              <th>CASERÍO</th>
+              <th>CONDICIÓN</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {currentRecords.map((comunero) => (
+              <tr key={comunero.id_com}>
+                <td>{comunero.id_com}</td>
+                <td>{comunero.dni_com}</td>
+                <td>{comunero.apellidos_com}</td>
+                <td>{comunero.nombres_com}</td>
+                <td>{comunero.majada_com}</td>
+                <td>{comunero.carne_com}</td>
+                <td>{comunero.caserio_com}</td>
+                <td>{comunero.condicion_com}</td>
+                <td>
+                  <div className="d-flex gap-1">
+                    <Button variant="success" size="sm" onClick={() => handleGenerarPDF(comunero)}>
+                      <FaFilePdf />
+                    </Button>
+                    <Button variant="primary" size="sm" onClick={() => abrirFormularioEnNuevaPestana(comunero)}>
+                      <FaBook />
+                    </Button>
+                    <Button variant="danger" size="sm">
+                      <FaTrash />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+
 
       {/* Paginación */}
       {totalPages > 1 && (

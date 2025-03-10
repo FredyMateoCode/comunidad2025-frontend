@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { jsPDF } from "jspdf";
 
+import QRCode from "qrcode";
+
 const FormularioComunero = () => {
   const [searchParams] = useSearchParams();
   const [comunero, setComunero] = useState({
@@ -29,8 +31,9 @@ const FormularioComunero = () => {
       carne_com: searchParams.get("carne_com") || "",
       caserio_com: searchParams.get("caserio_com") || "",
       condicion_com: searchParams.get("condicion_com") || "",
-      datos_adicionales: "", // Inicia vacío
-      seleccion: "", // Inicia vacío
+      dni_adicional: searchParams.get("dni_adicional") || "", // Inicia vacío
+      nombres_adicional: searchParams.get("nombres_adicional") || "", // Inicia vacío
+      seleccion: searchParams.get("seleccion") || "", // Inicia vacío
     });
   }, [searchParams]);
 
@@ -39,23 +42,56 @@ const FormularioComunero = () => {
   };
 
   // Función para generar el PDF
-  const handleGenerarPDF = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(14);
-    doc.text("Datos del Pariente del Comunero", 10, 10);
+  const handleGenerarPDF = async () => {
+  const doc = new jsPDF();
 
-    // Agregar los datos al PDF
-    let y = 20;
-    for (const key in comunero) {
-      doc.text(`${key.replace(/_/g, " ").toUpperCase()}: ${comunero[key]}`, 10, y);
-      y += 10;
-    }
+  // Obtener la fecha actual
+  const fechaActual = new Date().toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
 
-    // Abrir en nueva ventana
-    const pdfBlob = doc.output("blob");
-    const pdfUrl = URL.createObjectURL(pdfBlob);
-    window.open(pdfUrl);
-  };
+  // Agregar los datos al PDF
+  doc.setFont("times", "bold");
+  doc.setFontSize(25);
+  doc.text("LA JUNTA DIRECTIVA DE LA ", 105, 65, { align: "center" });
+  doc.text("COMUNIDAD CAMPESINA", 105, 77, { align: "center" });
+  doc.text("DE HUAYLLAY", 105, 89, { align: "center" });
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(30);
+  doc.text("HACE CONSTAR", 105, 105, { align: "center" });
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(16);
+
+  const texto = `Que, el Jv. Sta. ${comunero.nombres_adicional}, identificado con DNI N° ${comunero.dni_adicional}, es ${comunero.seleccion} del Sr.(a) ${comunero.apellidos_com}, ${comunero.nombres_com}, quien es comunero del caserío de ${comunero.caserio_com}, majada de ${comunero.majada_com}, con carné N° ${comunero.carne_com}, y está registrado en el Padrón General de Nuestra Comunidad Campesina de Huayllay.`;
+
+  const anchoTexto = 175;
+  const lineas = doc.splitTextToSize(texto, anchoTexto);
+
+  doc.text(lineas, doc.internal.pageSize.width / 2, 120, { align: "center" });
+
+  doc.text(`Se expide la presente a solicitud del interesado para fines`, 40, 157);
+  doc.text(`que estime conveniente.`, 20, 164);
+
+  // Incluir la fecha actual
+  doc.text(`Huayllay, ${fechaActual}`, 100, 180);
+  doc.text(`Atentamente;.`, 85, 205);
+
+  // Generar QR con los datos del comunero
+  const qrData = `DNI: ${comunero.dni_com}, Carné: ${comunero.carne_com}`;
+  const qrImageData = await QRCode.toDataURL(qrData); // Generar QR en base64
+
+  // Insertar QR en la parte inferior derecha
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  doc.addImage(qrImageData, "PNG", pageWidth - 40, pageHeight - 40, 30, 30); // Posición y tamaño
+
+  window.open(doc.output("bloburl"), "_blank");
+};
+
 
   return (
     <div className="container mt-4">
@@ -83,21 +119,25 @@ const FormularioComunero = () => {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>N° Carné</Form.Label>
-          <Form.Control type="text" name="carne_com" value={comunero.carne_com} onChange={handleChange} />
+          <Form.Control type="text" name="carne_com" value={comunero.carne_com} onChange={handleChange} readOnly />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Caserío</Form.Label>
-          <Form.Control type="text" name="caserio_com" value={comunero.caserio_com} onChange={handleChange} />
+          <Form.Control type="text" name="caserio_com" value={comunero.caserio_com} onChange={handleChange} readOnly />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Condición</Form.Label>
-          <Form.Control type="text" name="condicion_com" value={comunero.condicion_com} onChange={handleChange} />
+          <Form.Control type="text" name="condicion_com" value={comunero.condicion_com} onChange={handleChange} readOnly />
         </Form.Group>
 
         {/* Campo adicional de texto */}
         <Form.Group className="mb-3">
-          <Form.Label>Datos Adicionales</Form.Label>
-          <Form.Control type="text" name="datos_adicionales" value={comunero.datos_adicionales} onChange={handleChange} />
+          <Form.Label>DNI N°</Form.Label>
+          <Form.Control type="text" name="dni_adicional" value={comunero.dni_adicional} onChange={handleChange} />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>APELLIDOS Y NOMBRES:</Form.Label>
+          <Form.Control type="text" name="nombres_adicional" value={comunero.nombres_adicional} onChange={handleChange} />
         </Form.Group>
 
         {/* Lista de opciones */}
@@ -105,9 +145,8 @@ const FormularioComunero = () => {
           <Form.Label>Seleccionar Opción</Form.Label>
           <Form.Select name="seleccion" value={comunero.seleccion} onChange={handleChange}>
             <option value="">Seleccione una opción</option>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
+            <option value="Hijo(a)">Hijo(a)</option>
+            <option value="Esposo(a)">Esposo(a)</option>
           </Form.Select>
         </Form.Group>
 
