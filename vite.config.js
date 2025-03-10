@@ -1,16 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000, // Cambia este número al puerto que desees
+    port: 3000,
+    historyApiFallback: true, // Redirige todas las rutas a index.html en el modo de desarrollo
   },
   build: {
-    chunkSizeWarningLimit: 2000, // Aumenta el límite de advertencia (ajusta según sea necesario)
+    chunkSizeWarningLimit: 2000,
+  },
+  resolve: {
+    alias: {
+      '/formulario-comunero': '/index.html', // Redirige en producción
+    },
   },
 });
-
-
-
