@@ -18,7 +18,10 @@ const FormularioComunero = () => {
     carne_com: "",
     caserio_com: "",
     condicion_com: "",
-    datos_adicionales: "", // Nuevo campo de texto en blanco
+    connotacion_tit:"",
+    connotacion: "", // Nuevo campo de selección
+    dni_adicional: "", // Nuevo campo de texto en blanco
+    nombres_adicional: "", // Nuevo campo de texto en blanco
     seleccion: "", // Nuevo campo de selección
   });
 
@@ -32,6 +35,8 @@ const FormularioComunero = () => {
       carne_com: searchParams.get("carne_com") || "",
       caserio_com: searchParams.get("caserio_com") || "",
       condicion_com: searchParams.get("condicion_com") || "",
+      connotacion_tit: searchParams.get("connotacion_tit") || "",
+      connotoacion: searchParams.get("connotoacion") || "", // Inicia vacío
       dni_adicional: searchParams.get("dni_adicional") || "", // Inicia vacío
       nombres_adicional: searchParams.get("nombres_adicional") || "", // Inicia vacío
       seleccion: searchParams.get("seleccion") || "", // Inicia vacío
@@ -67,7 +72,7 @@ const FormularioComunero = () => {
   doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
 
-  const texto = `Que, el Señor(a) ${comunero.nombres_adicional}, identificado con DNI N° ${comunero.dni_adicional}, es ${comunero.seleccion} del Sr.(a) ${comunero.apellidos_com}, ${comunero.nombres_com}, quien es comunero del caserío de ${comunero.caserio_com}, majada de ${comunero.majada_com}, con carné N° ${comunero.carne_com}, y está registrado en el Padrón General de Nuestra Comunidad Campesina de Huayllay.`;
+  const texto = `Que, ${comunero.connotacion}. ${comunero.nombres_adicional}, identificado con DNI N° ${comunero.dni_adicional}, es ${comunero.seleccion} ${comunero.connotacion_tit} ${comunero.apellidos_com}, ${comunero.nombres_com}, quien es comunero del caserío de ${comunero.caserio_com}, majada de ${comunero.majada_com}, con carné N° ${comunero.carne_com}, y está registrado en el Padrón General de Nuestra Comunidad Campesina de Huayllay.`;
 
   const anchoTexto = 175;
   const lineas = doc.splitTextToSize(texto, anchoTexto);
@@ -96,12 +101,12 @@ const FormularioComunero = () => {
 
   return (
     <div className="container mt-4">
-      <h3>Formulario del Comunero</h3>
+      <h3>Datos del Comunero</h3>
       <Row className="mb-3">
         {/* Primera columna */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>ID</Form.Label>
+            <Form.Label><strong>ID:</strong></Form.Label>
             <Form.Control type="text" value={comunero.id_com} readOnly />
           </Form.Group>
         </Col>
@@ -109,7 +114,7 @@ const FormularioComunero = () => {
         {/* Segunda columna */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>DNI</Form.Label>
+            <Form.Label><strong>DNI:</strong></Form.Label>
             <Form.Control type="text" name="dni_com" value={comunero.dni_com} onChange={handleChange} />
           </Form.Group>
         </Col>
@@ -117,7 +122,7 @@ const FormularioComunero = () => {
         {/* Tercera columna (solo visible en pantallas medianas y grandes) */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>Apellidos</Form.Label>
+            <Form.Label><strong>Apellidos:</strong></Form.Label>
             <Form.Control type="text" name="apellidos_com" value={comunero.apellidos_com} onChange={handleChange} />
           </Form.Group>
         </Col>
@@ -127,7 +132,7 @@ const FormularioComunero = () => {
         {/* Primera columna */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>Nombres</Form.Label>
+            <Form.Label><strong>Nombres:</strong></Form.Label>
             <Form.Control type="text" name="nombres_com" value={comunero.nombres_com} onChange={handleChange} />
           </Form.Group>
         </Col>
@@ -135,7 +140,7 @@ const FormularioComunero = () => {
         {/* Segunda columna */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>Majada</Form.Label>
+            <Form.Label><strong>Majada:</strong></Form.Label>
             <Form.Control type="text" name="majada_com" value={comunero.majada_com} onChange={handleChange} />
           </Form.Group>
         </Col>
@@ -143,7 +148,7 @@ const FormularioComunero = () => {
         {/* Tercera columna (solo visible en pantallas medianas y grandes) */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>N° Carné</Form.Label>
+            <Form.Label><strong>N° Carné:</strong></Form.Label>
             <Form.Control type="text" name="carne_com" value={comunero.carne_com} onChange={handleChange} readOnly />
           </Form.Group>
         </Col>
@@ -153,7 +158,7 @@ const FormularioComunero = () => {
         {/* Primera columna */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>Caserío</Form.Label>
+            <Form.Label><strong>Caserío:</strong></Form.Label>
             <Form.Control type="text" name="caserio_com" value={comunero.caserio_com} onChange={handleChange} readOnly />
           </Form.Group>
         </Col>
@@ -161,59 +166,84 @@ const FormularioComunero = () => {
         {/* Segunda columna */}
         <Col xs={12} md={6} lg={4}>
           <Form.Group className="mb-3">
-            <Form.Label>Condición</Form.Label>
+            <Form.Label><strong>Condición:</strong></Form.Label>
             <Form.Control type="text" name="condicion_com" value={comunero.condicion_com} onChange={handleChange} readOnly />
           </Form.Group>
         </Col>
 
         {/* Tercera columna (solo visible en pantallas medianas y grandes) */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label><strong>Seleccionar Connotación:</strong></Form.Label>
+            <Form.Select name="connotacion_tit" value={comunero.connotacion_tit} onChange={handleChange}>
+              <option value="">Seleccione una opción</option>
+              <option value="del Señor">Señor</option>
+              <option value="de la Señora">Señora</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
 
       </Row>
+      <Row className="mb-3">
+        <h3>Datos del Familiar:</h3>
+      </Row>
 
-
-      <Form>
+      <Row className="mb-3">
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label><strong>Seleccionar Connotación:</strong></Form.Label>
+            <Form.Select name="connotacion" value={comunero.connotacion} onChange={handleChange}>
+              <option value="">Seleccione una opción</option>
+              <option value="el Niño">Niño</option>
+              <option value="la Niña">Niña</option>
+              <option value="el Joven">Joven</option>
+              <option value="la Señorita">Señorita</option>
+              <option value="el Señor">Señor</option>
+              <option value="la Señora">Señora</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label><strong>DNI N°</strong></Form.Label>
+            <Form.Control type="text" name="dni_adicional" value={comunero.dni_adicional} onChange={handleChange} />
+          </Form.Group>
+        </Col>
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label><strong><strong>Apellidos y Nombres:</strong></strong></Form.Label>
+            <Form.Control type="text" name="nombres_adicional" value={comunero.nombres_adicional} onChange={handleChange} />
+          </Form.Group>
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label><strong>Seleccionar Parentesco</strong></Form.Label>
+            <Form.Select name="seleccion" value={comunero.seleccion} onChange={handleChange}>
+              <option value="">Seleccione una opción</option>
+              <option value="Hijo">Hijo</option>
+              <option value="Hija">Hija</option>
+              <option value="Esposo">Esposo</option>
+              <option value="Esposa">Esposa</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+      </Row>
         
-        
-        
-        
-        
-        
-        
-        
-
-
-
-        {/* Campo adicional de texto */}
-        <Form.Group className="mb-3">
-          <Form.Label>DNI N°</Form.Label>
-          <Form.Control type="text" name="dni_adicional" value={comunero.dni_adicional} onChange={handleChange} />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>APELLIDOS Y NOMBRES:</Form.Label>
-          <Form.Control type="text" name="nombres_adicional" value={comunero.nombres_adicional} onChange={handleChange} />
-        </Form.Group>
-
-        {/* Lista de opciones */}
-        <Form.Group className="mb-3">
-          <Form.Label>Seleccionar Opción</Form.Label>
-          <Form.Select name="seleccion" value={comunero.seleccion} onChange={handleChange}>
-            <option value="">Seleccione una opción</option>
-            <option value="Hijo(a)">Hijo(a)</option>
-            <option value="Esposo(a)">Esposo(a)</option>
-          </Form.Select>
-        </Form.Group>
-
+      <Form>    
         {/* Botones */}
         <div className="d-flex gap-2">
-          <Button variant="primary" onClick={handleGenerarPDF}>
+          <Button variant="warning" onClick={handleGenerarPDF}>
             Generar PDF
           </Button>
-          <Button variant="secondary" onClick={() => window.close()}>
+          <Button variant="danger" onClick={() => window.close()}>
             Cancelar
           </Button>
         </div>
       </Form>
     </div>
+    
   );
 };
 
