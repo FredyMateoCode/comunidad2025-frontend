@@ -13,29 +13,26 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      //const response = await axios.post("http://localhost:5000/autenticarUsuarios/login", {
       const response = await axios.post("https://comunidad2025-backend.onrender.com/autenticarUsuarios/login", {
         usuario,
         password,
       });
 
       console.log("Respuesta del servidor:", response.data);
-      alert("Inicio de sesión exitoso - BIENVENIDOS");
-      navigate("/dashboard"); // Ruta que se muestra desspues del inicio de sesion.
 
-
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token); // Guarda el token en localStorage
+        alert("Inicio de sesión exitoso - BIENVENIDOS");
+        navigate("/dashboard"); // Redirige al Dashboard
+      } else {
+        alert("Error en la autenticación: No se recibió un token válido.");
+      }
     } catch (error) {
       console.error("Error en la autenticación:", error);
-
-      if (error.response) {
-        // Si el backend envía un mensaje de error, lo mostramos
-        alert(error.response.data.mensaje || "Usuario o contraseña incorrectos");
-      } else {
-        // Error en la conexión al backend
-        alert("Error en la conexión al servidor");
-      }
+      alert(error.response?.data?.mensaje || "Usuario o contraseña incorrectos");
     }
   };
+
 
   /*Creación del formulario*/
   return (
