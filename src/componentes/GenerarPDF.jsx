@@ -31,12 +31,12 @@ const GenerarPDF = async (comunero) => {
 
   doc.text(lineas, doc.internal.pageSize.width / 2, 120, { align: "center" });
 
-  doc.text(`Se expide la presente a solicitud del interesado para fines`, 40, 150);
-  doc.text(`que estime conveniente.`, 20, 157);
+  doc.text(`Se expide la presente a solicitud del interesado para fines`, 40, 153);
+  doc.text(`que estime conveniente.`, 20, 160);
 
   // Incluir la fecha actual
-  doc.text(`Huayllay, ${fechaActual}`, 100, 180);
-  doc.text(`Atentamente;.`, 85, 205);
+  doc.text(`Huayllay, ${fechaActual}`, 100, 183);
+  doc.text(`Atentamente;.`, 85, 208);
 
   // Generar QR con los datos del comunero
   const qrData = `DNI: ${comunero.dni_com}, Carné: ${comunero.carne_com}`;
@@ -45,7 +45,7 @@ const GenerarPDF = async (comunero) => {
   // Insertar QR en la parte inferior derecha
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  doc.addImage(qrImageData, "PNG", pageWidth - 40, pageHeight - 40, 30, 30); // Posición y tamaño
+  doc.addImage(qrImageData, "PNG", pageWidth - 40, pageHeight - 70, 30, 30); // Posición y tamaño
 
   window.open(doc.output("bloburl"), "_blank");
 };
