@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Form from "react-bootstrap/Form";
+import { Row, Col, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { jsPDF } from "jspdf";
 
 import QRCode from "qrcode";
+
 
 const FormularioComunero = () => {
   const [searchParams] = useSearchParams();
@@ -66,7 +67,7 @@ const FormularioComunero = () => {
   doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
 
-  const texto = `Que, el Jv. Sta. ${comunero.nombres_adicional}, identificado con DNI N° ${comunero.dni_adicional}, es ${comunero.seleccion} del Sr.(a) ${comunero.apellidos_com}, ${comunero.nombres_com}, quien es comunero del caserío de ${comunero.caserio_com}, majada de ${comunero.majada_com}, con carné N° ${comunero.carne_com}, y está registrado en el Padrón General de Nuestra Comunidad Campesina de Huayllay.`;
+  const texto = `Que, el Señor(a) ${comunero.nombres_adicional}, identificado con DNI N° ${comunero.dni_adicional}, es ${comunero.seleccion} del Sr.(a) ${comunero.apellidos_com}, ${comunero.nombres_com}, quien es comunero del caserío de ${comunero.caserio_com}, majada de ${comunero.majada_com}, con carné N° ${comunero.carne_com}, y está registrado en el Padrón General de Nuestra Comunidad Campesina de Huayllay.`;
 
   const anchoTexto = 175;
   const lineas = doc.splitTextToSize(texto, anchoTexto);
@@ -96,39 +97,91 @@ const FormularioComunero = () => {
   return (
     <div className="container mt-4">
       <h3>Formulario del Comunero</h3>
+      <Row className="mb-3">
+        {/* Primera columna */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>ID</Form.Label>
+            <Form.Control type="text" value={comunero.id_com} readOnly />
+          </Form.Group>
+        </Col>
+
+        {/* Segunda columna */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>DNI</Form.Label>
+            <Form.Control type="text" name="dni_com" value={comunero.dni_com} onChange={handleChange} />
+          </Form.Group>
+        </Col>
+
+        {/* Tercera columna (solo visible en pantallas medianas y grandes) */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>Apellidos</Form.Label>
+            <Form.Control type="text" name="apellidos_com" value={comunero.apellidos_com} onChange={handleChange} />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        {/* Primera columna */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>Nombres</Form.Label>
+            <Form.Control type="text" name="nombres_com" value={comunero.nombres_com} onChange={handleChange} />
+          </Form.Group>
+        </Col>
+
+        {/* Segunda columna */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>Majada</Form.Label>
+            <Form.Control type="text" name="majada_com" value={comunero.majada_com} onChange={handleChange} />
+          </Form.Group>
+        </Col>
+
+        {/* Tercera columna (solo visible en pantallas medianas y grandes) */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>N° Carné</Form.Label>
+            <Form.Control type="text" name="carne_com" value={comunero.carne_com} onChange={handleChange} readOnly />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        {/* Primera columna */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>Caserío</Form.Label>
+            <Form.Control type="text" name="caserio_com" value={comunero.caserio_com} onChange={handleChange} readOnly />
+          </Form.Group>
+        </Col>
+
+        {/* Segunda columna */}
+        <Col xs={12} md={6} lg={4}>
+          <Form.Group className="mb-3">
+            <Form.Label>Condición</Form.Label>
+            <Form.Control type="text" name="condicion_com" value={comunero.condicion_com} onChange={handleChange} readOnly />
+          </Form.Group>
+        </Col>
+
+        {/* Tercera columna (solo visible en pantallas medianas y grandes) */}
+
+      </Row>
+
+
       <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>ID</Form.Label>
-          <Form.Control type="text" value={comunero.id_com} readOnly />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>DNI</Form.Label>
-          <Form.Control type="text" name="dni_com" value={comunero.dni_com} onChange={handleChange} />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Apellidos</Form.Label>
-          <Form.Control type="text" name="apellidos_com" value={comunero.apellidos_com} onChange={handleChange} />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Nombres</Form.Label>
-          <Form.Control type="text" name="nombres_com" value={comunero.nombres_com} onChange={handleChange} />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Majada</Form.Label>
-          <Form.Control type="text" name="majada_com" value={comunero.majada_com} onChange={handleChange} />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>N° Carné</Form.Label>
-          <Form.Control type="text" name="carne_com" value={comunero.carne_com} onChange={handleChange} readOnly />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Caserío</Form.Label>
-          <Form.Control type="text" name="caserio_com" value={comunero.caserio_com} onChange={handleChange} readOnly />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Condición</Form.Label>
-          <Form.Control type="text" name="condicion_com" value={comunero.condicion_com} onChange={handleChange} readOnly />
-        </Form.Group>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
 
         {/* Campo adicional de texto */}
         <Form.Group className="mb-3">

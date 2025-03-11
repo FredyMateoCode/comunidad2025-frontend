@@ -9,5 +9,5 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 2000,
   },
-  base: './', // Asegura rutas relativas en producción
+  base: '/', // Asegura rutas relativas en producción
 });
