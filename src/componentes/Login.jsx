@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importamos useNavigate
 import axios from "axios";
 import "../assets/styles/Login.css";//Estilos 
+import Swal from "sweetalert2";
 
 const Login = () => {
   //Para capturar los datos del formulario
@@ -9,27 +10,55 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Hook para la navegación
 
-  const handleSubmit = async (e) => {
+  
+
+const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://comunidad2025-backend.onrender.com/autenticarUsuarios/login", {
-        usuario,
-        password,
-      });
+      const response = await axios.post(
+        "https://comunidad2025-backend.onrender.com/autenticarUsuarios/login",
+        {
+          usuario,
+          password,
+        }
+      );
 
       console.log("Respuesta del servidor:", response.data);
 
       if (response.data.token) {
-        localStorage.setItem("token", response.data.token); // Guarda el token en localStorage
-        alert("Inicio de sesión exitoso - BIENVENIDOS");
-        navigate("/dashboard"); // Redirige al Dashboard
+        localStorage.setItem("token", response.data.token); // Guarda el token
+
+        // ✅ Mostrar mensaje del backend con SweetAlert2
+        Swal.fire({
+          icon: "success",
+          title: "¡Inicio de sesión exitoso!",
+          text: response.data.mensaje || "Bienvenido a la plataforma.",
+          confirmButtonColor: "#3085d6",
+        }).then(() => {
+          navigate("/dashboard"); // Redirige al Dashboard después de cerrar la alerta
+        });
+
       } else {
-        alert("Error en la autenticación: No se recibió un token válido.");
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: response.data.mensaje || "No se recibió un token válido.",
+        });
       }
+
     } catch (error) {
       console.error("Error en la autenticación:", error);
-      alert(error.response?.data?.mensaje || "Usuario o contraseña incorrectos");
+
+      // ⚠️ Verifica si el backend envía un mensaje de error
+      const mensajeError =
+        error.response?.data?.mensaje || "Usuario o contraseña incorrectos";
+
+      Swal.fire({
+        icon: "error",
+        title: "Error de autenticación",
+        text: mensajeError,
+      });
     }
   };
 
